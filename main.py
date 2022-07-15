@@ -16,16 +16,18 @@ class Products:
             print(cnt, i.strip())
             cnt += 1
 
-    def edit_list(self, ind, item):
+    def edit_item(self, ind, product, price):
         file = open(self.filename, 'w')
+        item = product + ' - ' + str(price)
         self.product_list[ind] = item
         for i in range(len(self.product_list)):
             self.product_list[i] = self.product_list[i]+'\n'
         file.writelines(self.product_list)
         file.close()
 
-    def add_item(self, item):
+    def add_item(self, product, price):
         file = open(self.filename, 'w')
+        item = product + ' - ' + str(price)
         self.product_list.append(item)
         for i in range(len(self.product_list)):
             self.product_list[i] = self.product_list[i]+'\n'
@@ -39,18 +41,36 @@ class Products:
         file.writelines(self.product_list)
         file.close()
 
-
-products = Products(sys.argv[1])
-products.show_list()
-if sys.argv[2] == 'add':
-    item = input("New item name: ")
-    products.add_item(item)
-elif sys.argv[2] == 'edit':
-    ind = int(input("Input the row index you want to edit: "))
-    item = input(f"New value for row {ind}: ")
-    products.edit_list(ind, item)
-elif sys.argv[2] == 'delete':
-    ind = int(input("Input the index of the product you want to delete: "))
-    products.delete_item(ind)
-print("\nProducts list successfully updated")
-products.show_list()
+    def calc(self):
+        total_price = 0
+        for item in self.product_list:
+            dash = item.index('-')
+            total_price += int(item[dash+1:].strip())
+        return total_price
+try:
+    is_calc = False
+    products = Products(sys.argv[1])
+    products.show_list()
+    if sys.argv[2] == 'add':
+        is_calc = True
+        product = input("New product name: ")
+        price = int(input("New product price: "))
+        products.add_item(product, price)
+    elif sys.argv[2] == 'edit':
+        is_calc = True
+        ind = int(input("Input the row index you want to edit: "))
+        product = input(f"New product name for row {ind}: ")
+        price = int(input(f"New product price for row {ind}: "))
+        products.edit_item(ind, product, price)
+    elif sys.argv[2] == 'delete':
+        is_calc = True
+        ind = int(input("Input the index of the product you want to delete: "))
+        products.delete_item(ind)
+    elif sys.argv[2] == 'calc':
+        print('-' * 15)
+        print("Total price:", products.calc())
+    if is_calc:
+        print("\nProducts list updated successfully")
+        products.show_list()
+except FileNotFoundError:
+    print("File not found")
