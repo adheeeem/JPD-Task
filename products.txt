@@ -1,6 +1,7 @@
-hello - 1
+hello-1
 world-2
 hakuna-5
 matata-0
 stuff-5
 something-1
+foo-35
