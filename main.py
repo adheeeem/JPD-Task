@@ -1,5 +1,6 @@
 import sys
 
+
 class Products:
     product_list = []
 
@@ -17,7 +18,7 @@ class Products:
         for i in self.product_list:
             print(cnt, i.strip())
             cnt += 1
-    
+
     # Method to edit the item
     def edit_item(self, ind, product, price):
         file = open(self.filename, 'w')
@@ -54,9 +55,11 @@ class Products:
             total_price += float(item[dash+1:].strip())
         return total_price
 
+
 # Error handler for misspelled file name
 try:
-    if len(sys.argv) != 3: print("Missing some command line arguments")
+    if len(sys.argv) != 3:
+        print("Missing some command line arguments")
     else:
         is_calc = False
 
@@ -65,18 +68,19 @@ try:
         products.show_list()
         if sys.argv[2] == 'add':
             is_calc = True
-            product = input("New product name: ")
+            product = input("\nNew product name: ")
             price = float(input("New product price: "))
             products.add_item(product, price)
         elif sys.argv[2] == 'edit':
             is_calc = True
-            ind = int(input("Input the row index you want to edit: "))
+            ind = int(input("\nInput the row index you want to edit: "))
             product = input(f"New product name for row {ind}: ")
             price = float(input(f"New product price for row {ind}: "))
             products.edit_item(ind, product, price)
         elif sys.argv[2] == 'delete':
             is_calc = True
-            ind = int(input("Input the index of the product you want to delete: "))
+            ind = int(
+                input("\nInput the index of the product you want to delete: "))
             products.delete_item(ind)
         elif sys.argv[2] == 'calc':
             print('-' * 15)
