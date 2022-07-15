@@ -45,7 +45,7 @@ class Products:
         total_price = 0
         for item in self.product_list:
             dash = item.index('-')
-            total_price += int(item[dash+1:].strip())
+            total_price += float(item[dash+1:].strip())
         return total_price
 try:
     if len(sys.argv) != 3: print("Missing some command line arguments")
@@ -56,13 +56,13 @@ try:
         if sys.argv[2] == 'add':
             is_calc = True
             product = input("New product name: ")
-            price = int(input("New product price: "))
+            price = float(input("New product price: "))
             products.add_item(product, price)
         elif sys.argv[2] == 'edit':
             is_calc = True
             ind = int(input("Input the row index you want to edit: "))
             product = input(f"New product name for row {ind}: ")
-            price = int(input(f"New product price for row {ind}: "))
+            price = float(input(f"New product price for row {ind}: "))
             products.edit_item(ind, product, price)
         elif sys.argv[2] == 'delete':
             is_calc = True

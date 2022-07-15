@@ -1,8 +1,8 @@
 hello - 1
 world - 2
-hakuna - 5
-matataa - 12
+onion - 2.5
 stuff - 5
 something - 1
 cucumber - 57
 carrot - 5
+potato - 6
