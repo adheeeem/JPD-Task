@@ -4,6 +4,5 @@ hakuna - 5
 matataa - 12
 stuff - 5
 something - 1
-foo - 35
 cucumber - 57
 carrot - 5
