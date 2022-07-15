@@ -48,29 +48,31 @@ class Products:
             total_price += int(item[dash+1:].strip())
         return total_price
 try:
-    is_calc = False
-    products = Products(sys.argv[1])
-    products.show_list()
-    if sys.argv[2] == 'add':
-        is_calc = True
-        product = input("New product name: ")
-        price = int(input("New product price: "))
-        products.add_item(product, price)
-    elif sys.argv[2] == 'edit':
-        is_calc = True
-        ind = int(input("Input the row index you want to edit: "))
-        product = input(f"New product name for row {ind}: ")
-        price = int(input(f"New product price for row {ind}: "))
-        products.edit_item(ind, product, price)
-    elif sys.argv[2] == 'delete':
-        is_calc = True
-        ind = int(input("Input the index of the product you want to delete: "))
-        products.delete_item(ind)
-    elif sys.argv[2] == 'calc':
-        print('-' * 15)
-        print("Total price:", products.calc())
-    if is_calc:
-        print("\nProducts list updated successfully")
+    if len(sys.argv) != 3: print("Missing some command line arguments")
+    else:
+        is_calc = False
+        products = Products(sys.argv[1])
         products.show_list()
+        if sys.argv[2] == 'add':
+            is_calc = True
+            product = input("New product name: ")
+            price = int(input("New product price: "))
+            products.add_item(product, price)
+        elif sys.argv[2] == 'edit':
+            is_calc = True
+            ind = int(input("Input the row index you want to edit: "))
+            product = input(f"New product name for row {ind}: ")
+            price = int(input(f"New product price for row {ind}: "))
+            products.edit_item(ind, product, price)
+        elif sys.argv[2] == 'delete':
+            is_calc = True
+            ind = int(input("Input the index of the product you want to delete: "))
+            products.delete_item(ind)
+        elif sys.argv[2] == 'calc':
+            print('-' * 15)
+            print("Total price:", products.calc())
+        if is_calc:
+            print("\nProducts list updated successfully")
+            products.show_list()
 except FileNotFoundError:
     print("File not found")
