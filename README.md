@@ -2,7 +2,7 @@
 ***
 ## :pencil: Instructions to use the application
 
-### 1. Adding to the product list
+### 1. Adding item to the product list
    ``` 
    python3 main.py products.txt add
    ```
@@ -17,10 +17,10 @@ python3 main.py products.txt edit
 ```
 python3 main.py products.txt delete
 ```
-![example2](./examples/example3.png)
+![example3](./examples/example3.png)
 
 ### 4. Calculating the total price
 ```
 python3 main.py products.txt calc
 ```
-![example2](./examples/example4.png)
+![example4](./examples/example4.png)

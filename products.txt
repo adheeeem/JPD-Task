@@ -1,7 +1,5 @@
-world - 2
-onion - 2.5
-stuff - 5
-something - 1
-cucumber - 57
-carrot - 5
-potato - 6
+cucumber - 4.0
+oil - 65.0
+carrot - 4.5
+watermelon - 5.5
+bread - 6.0
